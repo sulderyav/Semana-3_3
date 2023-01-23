@@ -1,0 +1,40 @@
+let userChoice;
+let computerChoice;
+
+function getComputerChoice() {
+    let choices = ["piedra", "papel", "tijera"];
+    let randomIndex = Math.floor(Math.random() * 3);
+    return choices[randomIndex];
+}
+function determineWinner(userChoice, computerChoice) {
+    if (userChoice === computerChoice) {
+        console.log("Empate!") ;
+    } else if (userChoice === "piedra") {
+        if (computerChoice === "papel") {
+            console.log("Perdiste :(") ;
+        } else {
+            console.log("Ganaste!") ;
+        }
+    } else if (userChoice === "papel") {
+        if (computerChoice === "tijera") {
+            console.log("Perdiste :(");
+        } else {
+            console.log("Ganaste!");
+        }
+    } else if (userChoice === "tijera") {
+        if (computerChoice === "piedra") {
+            console.log("Perdiste :(");
+        } else {
+            console.log("Ganaste!");
+        }
+    }
+}
+userChoice = prompt("Elige piedra, papel o tijera").toLowerCase();
+
+while (userChoice !== "piedra" && userChoice !== "papel" && userChoice !== "tijera") {
+    userChoice = prompt("Elección inválida. Por favor, elige piedra, papel o tijera").toLowerCase();
+}
+computerChoice = getComputerChoice();
+console.log("Tu elección: " + userChoice);
+console.log("Elección del sistema: " + computerChoice);
+console.log(determineWinner(userChoice, computerChoice));
